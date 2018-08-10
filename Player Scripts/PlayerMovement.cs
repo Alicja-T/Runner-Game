@@ -20,6 +20,8 @@ public class PlayerMovement : MonoBehaviour {
 
 
     private bool gameStarted;
+    private PlayerHealthDamageShoot playerShoot;
+
 
     private BGScroller bgScroller;
 
@@ -28,6 +30,7 @@ public class PlayerMovement : MonoBehaviour {
         myBody = GetComponent<Rigidbody>();
         playerAnim = GetComponent<PlayerAnimation>();
         bgScroller = GameObject.Find(Tags.BACKGROUND_OBJ).GetComponent<BGScroller>();
+        playerShoot = GetComponent<PlayerHealthDamageShoot>();
 	}
 
     private void Start() {
@@ -75,6 +78,8 @@ public class PlayerMovement : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         gameStarted = true;
         bgScroller.canScroll = true;
+        playerShoot.canShoot = true;
+        GameplayController.instance.canCountScore = true;
         smokePosition.SetActive(true);
         playerAnim.PlayerRun();
     }

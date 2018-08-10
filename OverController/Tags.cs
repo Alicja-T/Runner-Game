@@ -17,6 +17,14 @@ public class Tags  {
     //GameObject Names
     public static string BACKGROUND_OBJ = "Background";
     public static string LEVEL_GENERATOR_OBJ = "Level Generator";
+    public static string SCORE_TEXT_OBJ = "Score Text";
+    public static string HEALTH_TEXT_OBJ = "Health Text";
+    public static string LEVEL_TEXT_OBJ = "Level Text";
+    public static string PAUSE_PANEL_OBJ = "Pause Panel";
+
+    //Scene Names
+    public static string GAMEPLAY_SCENE = "Gameplay";
+    public static string MAINMENU_SCENE = "MainMenu";
 
     //Player Animation Tags
     public static string ANIMATION_IDLE = "idle";

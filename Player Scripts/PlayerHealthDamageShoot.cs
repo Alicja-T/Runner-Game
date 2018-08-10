@@ -12,6 +12,9 @@ public class PlayerHealthDamageShoot : MonoBehaviour {
     private LevelGenerator levelGenerator;
     private LevelGeneratorPooling levelGeneratorPool;
 
+    [HideInInspector]
+    public bool canShoot;
+
 	// Use this for initialization
 	void Awake () {
         levelGenerator = GameObject.Find(Tags.LEVEL_GENERATOR_OBJ).GetComponent<LevelGenerator>();
@@ -42,12 +45,12 @@ public class PlayerHealthDamageShoot : MonoBehaviour {
     void OnTriggerEnter(Collider target){
 
         if (target.tag == Tags.MONSTER_BULLET_TAG || target.tag == Tags.BOUNDS_TAG) {
-            // inform game controller that player died
+            GameplayController.instance.TakeDamage();
             Destroy(gameObject);
         }
 
         if (target.tag == Tags.HEALTH_TAG) {
-            // inform game controller that player got health
+            GameplayController.instance.IncrementHealth();
             target.gameObject.SetActive(false);
         }
 
@@ -62,7 +65,7 @@ public class PlayerHealthDamageShoot : MonoBehaviour {
 
     void OnCollisionEnter(Collision target) {
         if (target.gameObject.tag == Tags.MONSTER_TAG) {
-            // inform game controller that player died
+            GameplayController.instance.TakeDamage();
             Destroy(gameObject);
         }
     }

@@ -90,6 +90,7 @@ public class Monster : MonoBehaviour {
 
     void OnTriggerEnter(Collider target) {
         if (target.tag == Tags.PLAYER_BULLET_TAG) {
+            GameplayController.instance.IncrementScore(200);
             MonsterDied();
         }        
     }
